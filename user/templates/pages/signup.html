@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{% static 'styles/sign.css'%}">
+</head>
+
+<body>
+
+  <div class="login-page">
+    <div class="form">
+      <form class="login-form" method="post">
+        <p style="font-weight: bold;">{{message}}</p>
+        {% csrf_token %}
+        <input {{ name|safe  }} type="text" name="name" placeholder="username" />
+        <input {{ password|safe  }} type="password" name="password" placeholder="password" />
+        <input {{ passwordC|safe  }} type="password" name="passwordC" placeholder="password confirm" />
+        <input {{ email|safe  }} type="text" name="email" placeholder="email address" />
+        <input {{ age|safe  }} type="number" name="age" placeholder="age" />
+        <div style="display: flex;justify-content: space-between;align-items: center;">
+          <p>Is your gender male?</p><input style="width: 30%;margin: 0;" type="checkbox" name="gender"
+            placeholder="gender" />
+        </div>
+        <button type="submit" name="signup">Register</button>
+        <p class="message">have an account? <a href="/user/signin">Login</a></p>
+        <p><a href="/">Back to home</a></p>
+        
+      </form>
+    </div>
+    
+  </div>
+</body>
+
+</html>

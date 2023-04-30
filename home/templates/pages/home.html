@@ -1,0 +1,119 @@
+{% extends "pages\layout.html" %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'styles/index.css'%}">
+{% endblock %}
+{% block main %}
+
+<main>
+    <div class="banner">
+        <div class="banner-left">
+            <img src="{% static 'images/carousel.jpg' %}" alt="">
+        </div>
+        <div class="banner-right">
+            <div class="banner-box">
+                <img src="{% static 'images/offer-1.jpg' %}" alt="">
+            </div>
+            <div class="banner-box">
+                <img src="{% static 'images/offer-2.jpg' %}" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="service">
+        <div>
+            <i class="fa-solid fa-check"></i>
+            <p>Quality Product</p>
+        </div>
+        <div>
+            <i class="fa-solid fa-truck-fast"></i>
+            <p>Free Shipping</p>
+        </div>
+        <div>
+            <i class="fa-solid fa-right-left"></i>
+            <p>14-Day Return</p>
+        </div>
+        <div>
+            <i class="fa-solid fa-phone-volume"></i>
+            <p>24/7 Support</p>
+        </div>
+    </div>
+    <!-- <div class="categories">
+        <h2>CATEGORIES</h2>
+        <hr>
+        <div class="categories-list">
+            <a href="/" class="categories-box">
+                <div class="categories-img">
+                    <img src="{% static 'images/cat-1.jpg' %}" alt="">
+                </div>
+                <div class="categories-content">
+                    <p>Category Name</p>
+                    <span>100 Products</span>
+                </div>
+            </a>
+            <a href="/" class="categories-box">
+                <div class="categories-img">
+                    <img src="{% static 'images/cat-1.jpg' %}" alt="">
+                </div>
+                <div class="categories-content">
+                    <p>Category Name</p>
+                    <span>100 Products</span>
+                </div>
+            </a>
+            <a href="/" class="categories-box">
+                <div class="categories-img">
+                    <img src="{% static 'images/cat-1.jpg' %}" alt="">
+                </div>
+                <div class="categories-content">
+                    <p>Category Name</p>
+                    <span>100 Products</span>
+                </div>
+            </a>
+            <a href="/" class="categories-box">
+                <div class="categories-img">
+                    <img src="{% static 'images/cat-1.jpg' %}" alt="">
+                </div>
+                <div class="categories-content">
+                    <p>Category Name</p>
+                    <span>100 Products</span>
+                </div>
+            </a>
+            <a href="/" class="categories-box">
+                <div class="categories-img">
+                    <img src="{% static 'images/cat-1.jpg' %}" alt="">
+                </div>
+                <div class="categories-content">
+                    <p>Category Name</p>
+                    <span>100 Products</span>
+                </div>
+            </a>
+        </div>
+    </div> -->
+    <div class="featured">
+        <h2>FEATURED PRODUCTS</h2>
+        <hr>
+        <div class="featured-list">
+            <!-- <a href="/" class="featured-box">
+                <div class="featured-img">
+                    <img src="{% static 'images/product-1.jpg' %}" alt="">
+                </div>
+                <div class="featured-content">
+                    <p>Product Name Goes Here</p>
+                    <span>$123.00</span>
+                </div>
+            </a> -->
+            {% for item in data %}
+            <a href="/products/{{item.id}}" class="featured-box">
+                <div class="featured-img">
+                    <img src="/media/{{ item.img }}" alt="">
+                </div>
+                <div class="featured-content">
+                    <p>{{item.name}}</p>
+                    <span>${{item.price}}</span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}

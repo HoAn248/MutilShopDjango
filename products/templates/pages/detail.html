@@ -1,0 +1,23 @@
+{% extends "pages\layout.html" %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'styles/detail.css'%}">
+{% endblock %}
+{% block main %}
+<main>
+    <div class="product">
+        <div class="product-img">
+            <img src="/media/{{ data.img }}" alt="">
+        </div>
+        <div class="product-main">
+            <h2>{{data.name}}</h2>
+            <p>${{data.price}}</p>
+            <span>{{data.description}}</span>
+            <form method="post">
+                {% csrf_token %}
+                <button name="cart" ><i class="fa-solid fa-cart-shopping"></i>Add To Cart</button>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "pages\layout.html" %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'styles/index.css'%}">
+{% endblock %}
+{% block main %}
+<main>
+    <div class="featured">
+        <h2>ALL PRODUCTS</h2>
+        <hr>
+        <div class="featured-list">
+            {% for item in data %}
+            <a href="/products/{{item.id}}" class="featured-box">
+                <div class="featured-img">
+                    <img src="/media/{{ item.img }}" alt="">
+                </div>
+                <div class="featured-content">
+                    <p>{{item.name}}</p>
+                    <span>${{item.price}}</span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}

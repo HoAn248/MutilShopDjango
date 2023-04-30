@@ -1,0 +1,53 @@
+{% extends "pages\layout.html" %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'styles/cart.css'%}" type="text/css">
+{% endblock %}
+{% block main %}
+<main>
+    <div class="cart">
+        <div class="cart-items">
+            <ul class="title-cart">
+                <li>Products</li>
+                <li>Price</li>
+                <li>Remove</li>
+            </ul>
+            <ul class="product-list">
+                {% for product in data %}
+                <li>
+                    <div class="product-name">
+                        {{product.name}}
+                    </div>
+                    <div class="product-price">
+                        ${{product.price}}
+                    </div>
+                    <div class="product-remove">
+                        <a href="/user/cart/{{product.id}}"><i class="fa-solid fa-trash"></i></a>
+                    </div>
+                </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+        <div class="cart-total">
+            <h2>CART SUMMARY</h2>
+            <hr>
+            <div class="total">
+                <ul>
+                    {% for product in data %}
+                    <li>
+                        <span>{{product.name}}</span>
+                        <span>${{product.price}}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <hr>
+                <div class="sum">
+                    <span>Sum: </span>
+                    <span>${{total_price}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

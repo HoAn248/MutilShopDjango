@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Document</title>
+    {% block style %}
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'styles/all.css'%}">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <div class="contact">
+                    <a href="">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+                <div class="account">
+                    {% if request.COOKIES.username %}
+                    <a style="border: 0;cursor: pointer;" id="logout">Logout</a>
+                    
+                    {% else %}
+                    <a href="/user/signin">Sigin</a>
+                    <a href="/user/signup">Signup</a>
+                    {% endif %}
+
+                </div>
+            </div>
+            <div class="header-center">
+                <a href="/" class="logo">
+                    <img src="{% static 'images/logo.png' %}" alt="">
+                </a>
+                <div class="search-box">
+                    <div class="box-search">
+                        <input placeholder="Search for products" type="text">
+                        <button>
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="customer-service">
+                    <p>Customer Service</p>
+                    <span>+012 345 6789</span>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <ul>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="/products">Shop</a>
+                    </li>
+                    <li>
+                        <a href="/user/cart">Cart</a>
+                    </li>
+                    <li>
+                        <a href="/">Contact</a>
+                    </li>
+                </ul>
+                <div class="utity">
+                    <div>
+                        <i class="fa-solid fa-heart"></i>
+                        <p>0</p>
+                    </div>
+                    <div>
+
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <p>0</p>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        {% block main %}
+        {% endblock %}
+
+        <footer>
+            <div class="logo">
+                <img src="{% static 'images/logo.png' %}" alt="">
+            </div>
+            <div class="all-footer">
+                <div class="footer-about">
+                    <p>123 Street, New York, USA</p>
+                    <p>info@example.com</p>
+                    <p>+012 345 67890</p>
+                </div>
+                <div class="footer-page">
+                    <a href="/">Home</a>
+                    <a href="/user/signin">Signin</a>
+                    <a href="/user/signup">Signup</a>
+                </div>
+                <div class="footer-contact">
+                    <a href=""><i class="fa-brands fa-facebook"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <p>@Ho An 123 @ abc . xyz</p>
+        </footer>
+    </div>
+    <script>
+        logout = document.getElementById('logout')
+        if(logout !== null){
+            logout.onclick = ()=>{
+                document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/";
+                window.location.href = '/'
+            }
+        }
+    </script>
+</body>
+
+</html>
